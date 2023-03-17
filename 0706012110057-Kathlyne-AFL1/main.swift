@@ -9,9 +9,9 @@ import Foundation
 
 let symbolsSet = CharacterSet(charactersIn: "=< >`~!@#$%^&*()-_+={}[]|;:'\",.<>?/")
 var uc_walk = ["Tuku-Tuku", "Gotri", "Madam Lie", "Kopte", "Gisoe"]
-var tuku_menu = ["Tahu isi", "Nasi kuning", "Nasi campur", "Air Mineral"]
-var gotri_menu = ["Nasi goreng", "Indomie Kuah", "Jus Alpukat", "Mie Goreng"]
-var madam_menu = ["Ayam Geprek", "Bebek Goreng", "Jus Jeruk", "Es Teh"]
+var tuku_menu = ["Nasi Uduk", "Nasi kuning", "Nasi campur", "Air Mineral"]
+var gotri_menu = ["Nasi Goreng", "Indomie Kuah", "Jus Alpukat", "Mie Goreng"]
+var madam_menu = ["Ayam Geprek", "Bebek Goreng", "Kerupuk", "Es Teh"]
 var kopte_menu = ["Teh Tarik", "Thai Tea", "Kopi Tarik", "Kopi Vietnam"]
 var gisoe_menu = ["Capuccino", "Latte", "Espresso", "Donat Kentang"]
 var tuku_price = [5000, 15000, 20000, 5000]
@@ -29,7 +29,7 @@ var cart_menu:[String] = []
 var cart_shop: [String] = []
 var cart_total_price : Int = 0
 var price: Int = 0
-var dupe = false
+var loop = false
 var index = 0
 var totalAwal = 0
 
@@ -47,12 +47,12 @@ func openScreen(){
     print("""
             -
             [S]hopping Cart
-            [Q]uit
+            [Q]uit \n
             Your cafetaria choice?
             """, terminator: " ")
-      
-      
-      userInput = readLine()!.lowercased()
+    
+    
+    userInput = readLine()!.lowercased()
     
     switch userInput{
     case"1":
@@ -76,27 +76,30 @@ func openScreen(){
     case"q":
         exit(0)
     default:
+        print("Please Input Correctly")
         openScreen()
     }
-   }
+}
 
 
 func tuku(){
-    dupe = false
+    loop = false
+    print("")
     print("""
-Hi, welcome back to Tuku-Tuku!
-What would you like to order?
+      Hi, welcome back to Tuku-Tuku!
+      What would you like to order?
+      
 """)
     for(i, menu) in tuku_menu.enumerated(){
         print("[\(i+1)\(". ")\(menu)]")
     }
     print("""
             -
-            [B]ack to Main Menu
+            [B]ack to Main Menu \n
             Your menu choice?
             """, terminator: " ")
-      userInput = readLine()!.lowercased()
-   
+    userInput = readLine()!.lowercased()
+    
     
     switch userInput{
     case"1":
@@ -115,14 +118,14 @@ What would you like to order?
         
         for (indexItem, item) in cart_menu.enumerated(){
             if item.contains("\(tuku_menu[0])"){
-                dupe = true
+                loop = true
                 index = indexItem
             }
         }
         
-        if dupe{
-            let dupe_menu = cart_menu[index].split(separator: " ")
-            for item in dupe_menu{
+        if loop{
+            let loop_menu = cart_menu[index].split(separator: " ")
+            for item in loop_menu{
                 if item.contains("x"){
                     totalAwal = Int(item.dropFirst()) ?? 0
                 }
@@ -134,12 +137,12 @@ What would you like to order?
             cart_shop.append("Tuku-Tuku")
         }
         
-                
-                price = tuku_price[0] * (Int(item_tuku) ?? 0)
-                
-                cart_total_price += price
-                
-                tuku()
+        
+        price = tuku_price[0] * (Int(item_tuku) ?? 0)
+        
+        cart_total_price += price
+        
+        tuku()
         break
     case"2":
         print("""
@@ -157,14 +160,14 @@ What would you like to order?
         
         for (indexItem, item) in cart_menu.enumerated(){
             if item.contains("\(tuku_menu[1])"){
-                dupe = true
+                loop = true
                 index = indexItem
             }
         }
         
-        if dupe{
-            let dupe_menu = cart_menu[index].split(separator: " ")
-            for item in dupe_menu{
+        if loop{
+            let loop_menu = cart_menu[index].split(separator: " ")
+            for item in loop_menu{
                 if item.contains("x"){
                     totalAwal = Int(item.dropFirst()) ?? 1
                 }
@@ -175,10 +178,10 @@ What would you like to order?
             cart_menu.append("\(tuku_menu[1]) x\(item_tuku)")
             cart_shop.append("Tuku-Tuku")
         }
-                
-                price = tuku_price[1] * (Int(item_tuku) ?? 1)
-                
-                cart_total_price += price
+        
+        price = tuku_price[1] * (Int(item_tuku) ?? 1)
+        
+        cart_total_price += price
         
         tuku()
         break
@@ -199,14 +202,14 @@ What would you like to order?
         
         for (indexItem, item) in cart_menu.enumerated(){
             if item.contains("\(tuku_menu[2])"){
-                dupe = true
+                loop = true
                 index = indexItem
             }
         }
         
-        if dupe{
-            let dupe_menu = cart_menu[index].split(separator: " ")
-            for item in dupe_menu{
+        if loop{
+            let loop_menu = cart_menu[index].split(separator: " ")
+            for item in loop_menu{
                 if item.contains("x"){
                     totalAwal = Int(item.dropFirst()) ?? 2
                 }
@@ -217,10 +220,10 @@ What would you like to order?
             cart_menu.append("\(tuku_menu[2]) x\(item_tuku)")
             cart_shop.append("Tuku-Tuku")
         }
-                
-                price = tuku_price[2] * (Int(item_tuku) ?? 2)
-                
-                cart_total_price += price
+        
+        price = tuku_price[2] * (Int(item_tuku) ?? 2)
+        
+        cart_total_price += price
         
         tuku()
         break
@@ -240,14 +243,14 @@ What would you like to order?
         
         for (indexItem, item) in cart_menu.enumerated(){
             if item.contains("\(tuku_menu[3])"){
-                dupe = true
+                loop = true
                 index = indexItem
             }
         }
         
-        if dupe{
-            let dupe_menu = cart_menu[index].split(separator: " ")
-            for item in dupe_menu{
+        if loop{
+            let loop_menu = cart_menu[index].split(separator: " ")
+            for item in loop_menu{
                 if item.contains("x"){
                     totalAwal = Int(item.dropFirst()) ?? 3
                 }
@@ -258,10 +261,10 @@ What would you like to order?
             cart_menu.append("\(tuku_menu[3]) x\(item_tuku)")
             cart_shop.append("Tuku-Tuku")
         }
-                
-                price = tuku_price[3] * (Int(item_tuku) ?? 3)
-                
-                cart_total_price += price
+        
+        price = tuku_price[3] * (Int(item_tuku) ?? 3)
+        
+        cart_total_price += price
         
         tuku()
         break
@@ -274,10 +277,11 @@ What would you like to order?
 }
 
 func gotri(){
-    dupe = false
+    loop = false
+    print("")
     print("""
-Hi, welcome back to Gotri!
-What would you like to order?
+    \n Hi, welcome back to Gotri!
+       What would you like to order?
 """)
     for(i, menu) in gotri_menu.enumerated(){
         print("[\(i+1)\(". ")\(menu)]")
@@ -285,10 +289,10 @@ What would you like to order?
     print("""
             -
             [B]ack to Main Menu
-            Your menu choice?
+            Your menu choice?\n
             """, terminator: " ")
-      userInput = readLine()!.lowercased()
-   
+    userInput = readLine()!.lowercased()
+    
     
     switch userInput{
     case"1":
@@ -296,7 +300,7 @@ What would you like to order?
               \(gotri_menu[0]) @ \(gotri_price[0].formatted())
               How many \(gotri_menu[0]) do you want to buy?
               """, terminator: " ")
-        item_tuku = readLine()!
+        item_gotri = readLine()!
         
         if !(item_gotri.range(of: #"^\d+$"#, options: .regularExpression) != nil) {
             print("\nYou can only input number\n")
@@ -307,14 +311,14 @@ What would you like to order?
         
         for (indexItem, item) in cart_menu.enumerated(){
             if item.contains("\(gotri_menu[0])"){
-                dupe = true
+                loop = true
                 index = indexItem
             }
         }
         
-        if dupe{
-            let dupe_menu = cart_menu[index].split(separator: " ")
-            for item in dupe_menu{
+        if loop{
+            let loop_menu = cart_menu[index].split(separator: " ")
+            for item in loop_menu{
                 if item.contains("x"){
                     totalAwal = Int(item.dropFirst()) ?? 0
                 }
@@ -323,14 +327,14 @@ What would you like to order?
             cart_menu[index] = "\(gotri_menu[0]) x\(totalAkhir)"
         }else{
             cart_menu.append("\(gotri_menu[0]) x\(item_gotri)")
-            cart_shop.append("Tuku-Tuku")
+            cart_shop.append("Gotri")
         }
-                
-                price = gotri_price[0] * (Int(item_gotri) ?? 0)
-                
-                cart_total_price += price
-                
-                gotri()
+        
+        price = gotri_price[0] * (Int(item_gotri) ?? 0)
+        
+        cart_total_price += price
+        
+        gotri()
         break
     case"2":
         print("""
@@ -348,14 +352,14 @@ What would you like to order?
         
         for (indexItem, item) in cart_menu.enumerated(){
             if item.contains("\(gotri_menu[1])"){
-                dupe = true
+                loop = true
                 index = indexItem
             }
         }
         
-        if dupe{
-            let dupe_menu = cart_menu[index].split(separator: " ")
-            for item in dupe_menu{
+        if loop{
+            let loop_menu = cart_menu[index].split(separator: " ")
+            for item in loop_menu{
                 if item.contains("x"){
                     totalAwal = Int(item.dropFirst()) ?? 1
                 }
@@ -366,10 +370,10 @@ What would you like to order?
             cart_menu.append("\(gotri_menu[1]) x\(item_gotri)")
             cart_shop.append("Gotri")
         }
-                
-                price = gotri_price[1] * (Int(item_gotri) ?? 1)
-                
-                cart_total_price += price
+        
+        price = gotri_price[1] * (Int(item_gotri) ?? 1)
+        
+        cart_total_price += price
         
         gotri()
         break
@@ -389,14 +393,14 @@ What would you like to order?
         
         for (indexItem, item) in cart_menu.enumerated(){
             if item.contains("\(gotri_menu[2])"){
-                dupe = true
+                loop = true
                 index = indexItem
             }
         }
         
-        if dupe{
-            let dupe_menu = cart_menu[index].split(separator: " ")
-            for item in dupe_menu{
+        if loop{
+            let loop_menu = cart_menu[index].split(separator: " ")
+            for item in loop_menu{
                 if item.contains("x"){
                     totalAwal = Int(item.dropFirst()) ?? 2
                 }
@@ -407,10 +411,10 @@ What would you like to order?
             cart_menu.append("\(gotri_menu[2]) x\(item_gotri)")
             cart_shop.append("Gotri")
         }
-                
-                price = gotri_price[2] * (Int(item_gotri) ?? 2)
-                
-                cart_total_price += price
+        
+        price = gotri_price[2] * (Int(item_gotri) ?? 2)
+        
+        cart_total_price += price
         
         gotri()
         break
@@ -430,14 +434,14 @@ What would you like to order?
         
         for (indexItem, item) in cart_menu.enumerated(){
             if item.contains("\(gotri_menu[3])"){
-                dupe = true
+                loop = true
                 index = indexItem
             }
         }
         
-        if dupe{
-            let dupe_menu = cart_menu[index].split(separator: " ")
-            for item in dupe_menu{
+        if loop{
+            let loop_menu = cart_menu[index].split(separator: " ")
+            for item in loop_menu{
                 if item.contains("x"){
                     totalAwal = Int(item.dropFirst()) ?? 3
                 }
@@ -448,10 +452,10 @@ What would you like to order?
             cart_menu.append("\(gotri_menu[3]) x\(item_gotri)")
             cart_shop.append("Gotri")
         }
-                
-                price = gotri_price[3] * (Int(item_gotri) ?? 3)
-                
-                cart_total_price += price
+        
+        price = gotri_price[3] * (Int(item_gotri) ?? 3)
+        
+        cart_total_price += price
         
         gotri()
         break
@@ -463,21 +467,22 @@ What would you like to order?
 }
 
 func madam(){
-    dupe = false
+    loop = false
+    print("")
     print("""
-Hi, welcome back to Madam Lie!
-What would you like to order?
+    \n Hi, welcome back to Madam Lie!
+       What would you like to order?
 """)
     for(i, menu) in madam_menu.enumerated(){
         print("[\(i+1)\(". ")\(menu)]")
     }
     print("""
             -
-            [B]ack to Main Menu
+            [B]ack to Main Menu\n
             Your menu choice?
             """, terminator: " ")
-      userInput = readLine()!.lowercased()
-   
+    userInput = readLine()!.lowercased()
+    
     
     switch userInput{
     case"1":
@@ -497,30 +502,30 @@ What would you like to order?
         
         for (indexItem, item) in cart_menu.enumerated(){
             if item.contains("\(madam_menu[0])"){
-                dupe = true
+                loop = true
                 index = indexItem
             }
         }
         
-        if dupe{
-            let dupe_menu = cart_menu[index].split(separator: " ")
-            for item in dupe_menu{
+        if loop{
+            let loop_menu = cart_menu[index].split(separator: " ")
+            for item in loop_menu{
                 if item.contains("x"){
                     totalAwal = Int(item.dropFirst()) ?? 0
                 }
             }
-            let totalAkhir = Int(item_gotri)! + totalAwal
+            let totalAkhir = Int(item_madam)! + totalAwal
             cart_menu[index] = "\(madam_menu[0]) x\(totalAkhir)"
         }else{
             cart_menu.append("\(madam_menu[0]) x\(item_madam)")
             cart_shop.append("Madam Lie")
         }
-                
-                price = madam_price[0] * (Int(item_madam) ?? 0)
-                
-                cart_total_price += price
-                
-                madam()
+        
+        price = madam_price[0] * (Int(item_madam) ?? 0)
+        
+        cart_total_price += price
+        
+        madam()
         break
     case"2":
         print("""
@@ -538,35 +543,35 @@ What would you like to order?
         
         for (indexItem, item) in cart_menu.enumerated(){
             if item.contains("\(madam_menu[1])"){
-                dupe = true
+                loop = true
                 index = indexItem
             }
         }
         
-        if dupe{
-            let dupe_menu = cart_menu[index].split(separator: " ")
-            for item in dupe_menu{
+        if loop{
+            let loop_menu = cart_menu[index].split(separator: " ")
+            for item in loop_menu{
                 if item.contains("x"){
                     totalAwal = Int(item.dropFirst()) ?? 0
                 }
             }
-            let totalAkhir = Int(item_gotri)! + totalAwal
+            let totalAkhir = Int(item_madam)! + totalAwal
             cart_menu[index] = "\(madam_menu[1]) x\(totalAkhir)"
         }else{
             cart_menu.append("\(madam_menu[1]) x\(item_madam)")
             cart_shop.append("Madam Lie")
         }
-                
-                price = madam_price[1] * (Int(item_madam) ?? 1)
-                
-                cart_total_price += price
+        
+        price = madam_price[1] * (Int(item_madam) ?? 1)
+        
+        cart_total_price += price
         
         madam()
         break
     case"3":
         print("""
               \(madam_menu[2]) @ \(madam_price[2].formatted())
-              How many \(tuku_menu[2]) do you want to buy?
+              How many \(madam_menu[2]) do you want to buy?
               """, terminator: " ")
         item_madam = readLine()!
         
@@ -579,14 +584,14 @@ What would you like to order?
         
         for (indexItem, item) in cart_menu.enumerated(){
             if item.contains("\(madam_menu[2])"){
-                dupe = true
+                loop = true
                 index = indexItem
             }
         }
         
-        if dupe{
-            let dupe_menu = cart_menu[index].split(separator: " ")
-            for item in dupe_menu{
+        if loop{
+            let loop_menu = cart_menu[index].split(separator: " ")
+            for item in loop_menu{
                 if item.contains("x"){
                     totalAwal = Int(item.dropFirst()) ?? 2
                 }
@@ -597,17 +602,17 @@ What would you like to order?
             cart_menu.append("\(madam_menu[2]) x\(item_madam)")
             cart_shop.append("Madam Lie")
         }
-                
-                price = madam_price[2] * (Int(item_madam) ?? 2)
-                
-                cart_total_price += price
+        
+        price = madam_price[2] * (Int(item_madam) ?? 2)
+        
+        cart_total_price += price
         
         madam()
         break
     case"4":
         print("""
               \(madam_menu[3]) @ \(madam_price[3].formatted())
-              How many \(gotri_menu[3]) do you want to buy?
+              How many \(madam_menu[3]) do you want to buy?
               """, terminator: " ")
         item_madam = readLine()!
         
@@ -620,14 +625,14 @@ What would you like to order?
         
         for (indexItem, item) in cart_menu.enumerated(){
             if item.contains("\(madam_menu[3])"){
-                dupe = true
+                loop = true
                 index = indexItem
             }
         }
         
-        if dupe{
-            let dupe_menu = cart_menu[index].split(separator: " ")
-            for item in dupe_menu{
+        if loop{
+            let loop_menu = cart_menu[index].split(separator: " ")
+            for item in loop_menu{
                 if item.contains("x"){
                     totalAwal = Int(item.dropFirst()) ?? 3
                 }
@@ -638,10 +643,10 @@ What would you like to order?
             cart_menu.append("\(madam_menu[3]) x\(item_madam)")
             cart_shop.append("Madam Lie")
         }
-                
-                price = madam_price[3] * (Int(item_madam) ?? 3)
-                
-                cart_total_price += price
+        
+        price = madam_price[3] * (Int(item_madam) ?? 3)
+        
+        cart_total_price += price
         
         madam()
         break
@@ -653,21 +658,22 @@ What would you like to order?
 }
 
 func kopte(){
-    dupe = false
+    loop = false
+    print("")
     print("""
-Hi, welcome back to Kopte!
-What would you like to order?
+    \n Hi, welcome back to Kopte!
+       What would you like to order?
 """)
     for(i, menu) in kopte_menu.enumerated(){
         print("[\(i+1)\(". ")\(menu)]")
     }
     print("""
             -
-            [B]ack to Main Menu
+            [B]ack to Main Menu \n
             Your menu choice?
             """, terminator: " ")
-      userInput = readLine()!.lowercased()
-   
+    userInput = readLine()!.lowercased()
+    
     
     switch userInput{
     case"1":
@@ -686,14 +692,14 @@ What would you like to order?
         
         for (indexItem, item) in cart_menu.enumerated(){
             if item.contains("\(kopte_menu[0])"){
-                dupe = true
+                loop = true
                 index = indexItem
             }
         }
         
-        if dupe{
-            let dupe_menu = cart_menu[index].split(separator: " ")
-            for item in dupe_menu{
+        if loop{
+            let loop_menu = cart_menu[index].split(separator: " ")
+            for item in loop_menu{
                 if item.contains("x"){
                     totalAwal = Int(item.dropFirst()) ?? 0
                 }
@@ -704,12 +710,12 @@ What would you like to order?
             cart_menu.append("\(kopte_menu[0]) x\(item_kopte)")
             cart_shop.append("Kopte")
         }
-                
-                price = kopte_price[0] * (Int(item_kopte) ?? 0)
-                
-                cart_total_price += price
-                
-                kopte()
+        
+        price = kopte_price[0] * (Int(item_kopte) ?? 0)
+        
+        cart_total_price += price
+        
+        kopte()
         break
     case"2":
         print("""
@@ -720,21 +726,21 @@ What would you like to order?
         
         if !(item_kopte.range(of: #"^\d+$"#, options: .regularExpression) != nil) {
             print("\nYou can only input number\n")
-            tuku()
+            kopte()
         }
         
         print("Thankyou for ordering.\n")
         
         for (indexItem, item) in cart_menu.enumerated(){
             if item.contains("\(kopte_menu[1])"){
-                dupe = true
+                loop = true
                 index = indexItem
             }
         }
         
-        if dupe{
-            let dupe_menu = cart_menu[index].split(separator: " ")
-            for item in dupe_menu{
+        if loop{
+            let loop_menu = cart_menu[index].split(separator: " ")
+            for item in loop_menu{
                 if item.contains("x"){
                     totalAwal = Int(item.dropFirst()) ?? 1
                 }
@@ -745,10 +751,10 @@ What would you like to order?
             cart_menu.append("\(kopte_menu[1]) x\(item_kopte)")
             cart_shop.append("Kopte")
         }
-                
-                price = kopte_price[1] * (Int(item_kopte) ?? 1)
-                
-                cart_total_price += price
+        
+        price = kopte_price[1] * (Int(item_kopte) ?? 1)
+        
+        cart_total_price += price
         
         kopte()
         break
@@ -761,21 +767,21 @@ What would you like to order?
         
         if !(item_kopte.range(of: #"^\d+$"#, options: .regularExpression) != nil) {
             print("\nYou can only input number\n")
-            tuku()
+            kopte()
         }
         
         print("Thankyou for ordering.\n")
         
         for (indexItem, item) in cart_menu.enumerated(){
             if item.contains("\(kopte_menu[2])"){
-                dupe = true
+                loop = true
                 index = indexItem
             }
         }
         
-        if dupe{
-            let dupe_menu = cart_menu[index].split(separator: " ")
-            for item in dupe_menu{
+        if loop{
+            let loop_menu = cart_menu[index].split(separator: " ")
+            for item in loop_menu{
                 if item.contains("x"){
                     totalAwal = Int(item.dropFirst()) ?? 2
                 }
@@ -786,10 +792,10 @@ What would you like to order?
             cart_menu.append("\(kopte_menu[2]) x\(item_kopte)")
             cart_shop.append("Kopte")
         }
-                
-                price = kopte_price[2] * (Int(item_kopte) ?? 2)
-                
-                cart_total_price += price
+        
+        price = kopte_price[2] * (Int(item_kopte) ?? 2)
+        
+        cart_total_price += price
         
         kopte()
         break
@@ -802,21 +808,21 @@ What would you like to order?
         
         if !(item_kopte.range(of: #"^\d+$"#, options: .regularExpression) != nil) {
             print("\nYou can only input number\n")
-            tuku()
+            kopte()
         }
         
         print("Thankyou for ordering.\n")
         
         for (indexItem, item) in cart_menu.enumerated(){
             if item.contains("\(kopte_menu[3])"){
-                dupe = true
+                loop = true
                 index = indexItem
             }
         }
         
-        if dupe{
-            let dupe_menu = cart_menu[index].split(separator: " ")
-            for item in dupe_menu{
+        if loop{
+            let loop_menu = cart_menu[index].split(separator: " ")
+            for item in loop_menu{
                 if item.contains("x"){
                     totalAwal = Int(item.dropFirst()) ?? 3
                 }
@@ -827,10 +833,10 @@ What would you like to order?
             cart_menu.append("\(kopte_menu[3]) x\(item_kopte)")
             cart_shop.append("Kopte")
         }
-                
-                price = kopte_price[3] * (Int(item_kopte) ?? 3)
-                
-                cart_total_price += price
+        
+        price = kopte_price[3] * (Int(item_kopte) ?? 3)
+        
+        cart_total_price += price
         
         kopte()
         break
@@ -842,21 +848,22 @@ What would you like to order?
 }
 
 func gisoe(){
-    dupe = false
+    loop = false
+    print("")
     print("""
-Hi, welcome back to Gisoe!
-What would you like to order?
+    \n Hi, welcome back to Gisoe!
+       What would you like to order?
 """)
     for(i, menu) in gisoe_menu.enumerated(){
         print("[\(i+1)\(". ")\(menu)]")
     }
     print("""
             -
-            [B]ack to Main Menu
+            [B]ack to Main Menu/n
             Your menu choice?
             """, terminator: " ")
-      userInput = readLine()!.lowercased()
-   
+    userInput = readLine()!.lowercased()
+    
     
     switch userInput{
     case"1":
@@ -868,21 +875,21 @@ What would you like to order?
         
         if !(item_gisoe.range(of: #"^\d+$"#, options: .regularExpression) != nil) {
             print("\nYou can only input number\n")
-            tuku()
+            gisoe()
         }
         
         print("Thankyou for ordering.\n")
         
         for (indexItem, item) in cart_menu.enumerated(){
             if item.contains("\(gisoe_menu[0])"){
-                dupe = true
+                loop = true
                 index = indexItem
             }
         }
         
-        if dupe{
-            let dupe_menu = cart_menu[index].split(separator: " ")
-            for item in dupe_menu{
+        if loop{
+            let loop_menu = cart_menu[index].split(separator: " ")
+            for item in loop_menu{
                 if item.contains("x"){
                     totalAwal = Int(item.dropFirst()) ?? 0
                 }
@@ -893,12 +900,12 @@ What would you like to order?
             cart_menu.append("\(gisoe_menu[0]) x\(item_gisoe)")
             cart_shop.append("Gisoe")
         }
-                
-                price = gisoe_price[0] * (Int(item_gisoe) ?? 0)
-                
-                cart_total_price += price
-                
-                gisoe()
+        
+        price = gisoe_price[0] * (Int(item_gisoe) ?? 0)
+        
+        cart_total_price += price
+        
+        gisoe()
         break
     case"2":
         print("""
@@ -916,14 +923,14 @@ What would you like to order?
         
         for (indexItem, item) in cart_menu.enumerated(){
             if item.contains("\(gisoe_menu[1])"){
-                dupe = true
+                loop = true
                 index = indexItem
             }
         }
         
-        if dupe{
-            let dupe_menu = cart_menu[index].split(separator: " ")
-            for item in dupe_menu{
+        if loop{
+            let loop_menu = cart_menu[index].split(separator: " ")
+            for item in loop_menu{
                 if item.contains("x"){
                     totalAwal = Int(item.dropFirst()) ?? 1
                 }
@@ -934,10 +941,10 @@ What would you like to order?
             cart_menu.append("\(gisoe_menu[1]) x\(item_gisoe)")
             cart_shop.append("Gisoe")
         }
-                
-                price = gisoe_price[1] * (Int(item_gisoe) ?? 1)
-                
-                cart_total_price += price
+        
+        price = gisoe_price[1] * (Int(item_gisoe) ?? 1)
+        
+        cart_total_price += price
         
         gisoe()
         break
@@ -950,21 +957,21 @@ What would you like to order?
         
         if !(item_gisoe.range(of: #"^\d+$"#, options: .regularExpression) != nil) {
             print("\nYou can only input number\n")
-            tuku()
+            gisoe()
         }
         
         print("Thankyou for ordering.\n")
         
         for (indexItem, item) in cart_menu.enumerated(){
             if item.contains("\(gisoe_menu[2])"){
-                dupe = true
+                loop = true
                 index = indexItem
             }
         }
         
-        if dupe{
-            let dupe_menu = cart_menu[index].split(separator: " ")
-            for item in dupe_menu{
+        if loop{
+            let loop_menu = cart_menu[index].split(separator: " ")
+            for item in loop_menu{
                 if item.contains("x"){
                     totalAwal = Int(item.dropFirst()) ?? 2
                 }
@@ -975,10 +982,10 @@ What would you like to order?
             cart_menu.append("\(gisoe_menu[2]) x\(item_gisoe)")
             cart_shop.append("Gisoe")
         }
-                
-                price = gisoe_price[2] * (Int(item_gisoe) ?? 2)
-                
-                cart_total_price += price
+        
+        price = gisoe_price[2] * (Int(item_gisoe) ?? 2)
+        
+        cart_total_price += price
         
         gisoe()
         break
@@ -998,14 +1005,14 @@ What would you like to order?
         
         for (indexItem, item) in cart_menu.enumerated(){
             if item.contains("\(gisoe_menu[3])"){
-                dupe = true
+                loop = true
                 index = indexItem
             }
         }
         
-        if dupe{
-            let dupe_menu = cart_menu[index].split(separator: " ")
-            for item in dupe_menu{
+        if loop{
+            let loop_menu = cart_menu[index].split(separator: " ")
+            for item in loop_menu{
                 if item.contains("x"){
                     totalAwal = Int(item.dropFirst()) ?? 3
                 }
@@ -1016,10 +1023,10 @@ What would you like to order?
             cart_menu.append("\(gisoe_menu[3]) x\(item_gisoe)")
             cart_shop.append("Gisoe")
         }
-                
-                price = gisoe_price[3] * (Int(item_gisoe) ?? 3)
-                
-                cart_total_price += price
+        
+        price = gisoe_price[3] * (Int(item_gisoe) ?? 3)
+        
+        cart_total_price += price
         
         gisoe()
         break
@@ -1034,10 +1041,57 @@ func shoppingCartScreen() {
     if cart_menu.isEmpty {
         print("Your cart is empty.")
     } else {
-        print("Your order:")
+        var tuku_cart: [String] = []
+        var gotri_cart: [String] = []
+        var madam_cart: [String] = []
+        var kopte_cart: [String] = []
+        var gisoe_cart: [String] = []
+        
+        //        print("Your order: \n")
+        //        for i in 0..<cart_menu.count {
+        //            print("Your order from \(cart_shop[i])\n- \(cart_menu[i])\n")
+        //        }
+        
         for i in 0..<cart_menu.count {
-            print("- \(cart_menu[i]) from \(cart_shop[i])")
+            if cart_shop[i] == "Tuku-Tuku" {
+                tuku_cart.append("- \(cart_menu[i])")
+            } else if cart_shop[i] == "Gotri" {
+                gotri_cart.append("- \(cart_menu[i])")
+            }else if cart_shop[i] == "Madam Lie" {
+                madam_cart.append("- \(cart_menu[i])")
+            }else if cart_shop[i] == "Kopte" {
+                kopte_cart.append("- \(cart_menu[i])")
+            }else if cart_shop[i] == "Gisoe" {
+                gisoe_cart.append("- \(cart_menu[i])")
+            }
         }
+        
+        if !tuku_cart.isEmpty {
+            print("Your order from Tuku-Tuku")
+            print(tuku_cart.joined(separator: "\n"))
+            print("")
+        }
+        if !gotri_cart.isEmpty {
+            print("Your order from Gotri")
+            print(gotri_cart.joined(separator: "\n"))
+            print("")
+        }
+        if !madam_cart.isEmpty {
+            print("Your order from Madam")
+            print(madam_cart.joined(separator: "\n"))
+            print("")
+        }
+        if !kopte_cart.isEmpty {
+            print("Your order from Kopte")
+            print(kopte_cart.joined(separator: "\n"))
+            print("")
+        }
+        if !gisoe_cart.isEmpty {
+            print("Your order from Gisoe")
+            print(gisoe_cart.joined(separator: "\n"))
+            print("")
+        }
+        
     }
     print("""
           [B]ack to Main Menu
@@ -1045,7 +1099,7 @@ func shoppingCartScreen() {
           Your choice?
           """, terminator: " ")
     userInput = readLine()!.lowercased()
-
+    
     switch userInput{
     case"b":
         openScreen()
@@ -1063,17 +1117,19 @@ func checkout() {
         print("Enter the amount of your money:", terminator: " ")
         if let input = readLine(), let inputAmount = Int(input) {
             if inputAmount <= 0 {
-                print("Payment can't be zero.")
+                print("Payment can't be zero.\n")
+            } else if inputAmount < cart_total_price {
+                print("Please enter a valid amount.\n")
             } else {
                 payment = inputAmount
             }
         } else {
-            print("Please enter a valid amount.")
+            print("Please enter a valid amount./n")
         }
-    } while payment <= 0
+    } while payment <= 0 || payment < cart_total_price
     let change = payment - cart_total_price
     print("You pay: \(payment.formatted()) Change: \(change.formatted())")
-    print("Enjoy your meals!")
+    print("Enjoy your meals!\n")
     cart_menu = []
     cart_shop = []
     cart_total_price = 0
