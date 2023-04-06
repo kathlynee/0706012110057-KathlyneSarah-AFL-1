@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		043AE5B529DF897000D4F0D4 /* Cafetaria.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043AE5B429DF897000D4F0D4 /* Cafetaria.swift */; };
+		043AE5B729DF897900D4F0D4 /* Shop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043AE5B629DF897900D4F0D4 /* Shop.swift */; };
+		043AE5B929DF898100D4F0D4 /* Cart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043AE5B829DF898100D4F0D4 /* Cart.swift */; };
+		043AE5BB29DF898B00D4F0D4 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043AE5BA29DF898B00D4F0D4 /* Order.swift */; };
 		045DD02D29AD9E7000801084 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045DD02C29AD9E7000801084 /* main.swift */; };
 /* End PBXBuildFile section */
 
@@ -23,6 +27,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		043AE5B429DF897000D4F0D4 /* Cafetaria.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cafetaria.swift; sourceTree = "<group>"; };
+		043AE5B629DF897900D4F0D4 /* Shop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shop.swift; sourceTree = "<group>"; };
+		043AE5B829DF898100D4F0D4 /* Cart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cart.swift; sourceTree = "<group>"; };
+		043AE5BA29DF898B00D4F0D4 /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
 		045DD02929AD9E7000801084 /* 0706012110057-Kathlyne-AFL1 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "0706012110057-Kathlyne-AFL1"; sourceTree = BUILT_PRODUCTS_DIR; };
 		045DD02C29AD9E7000801084 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -58,6 +66,10 @@
 			isa = PBXGroup;
 			children = (
 				045DD02C29AD9E7000801084 /* main.swift */,
+				043AE5B429DF897000D4F0D4 /* Cafetaria.swift */,
+				043AE5B629DF897900D4F0D4 /* Shop.swift */,
+				043AE5B829DF898100D4F0D4 /* Cart.swift */,
+				043AE5BA29DF898B00D4F0D4 /* Order.swift */,
 			);
 			path = "0706012110057-Kathlyne-AFL1";
 			sourceTree = "<group>";
@@ -120,7 +132,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				043AE5B729DF897900D4F0D4 /* Shop.swift in Sources */,
+				043AE5B529DF897000D4F0D4 /* Cafetaria.swift in Sources */,
+				043AE5BB29DF898B00D4F0D4 /* Order.swift in Sources */,
 				045DD02D29AD9E7000801084 /* main.swift in Sources */,
+				043AE5B929DF898100D4F0D4 /* Cart.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
